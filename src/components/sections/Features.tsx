@@ -61,20 +61,19 @@ const Features = () => {
           </p>
         </motion.div>
 
-        <div className="mx-auto mt-20 grid max-w-5xl gap-6 md:grid-cols-3 md:grid-rows-3 lg:gap-8">
+        <div className="mx-auto mt-20 grid max-w-5xl gap-6 md:grid-cols-3 lg:gap-8">
           {features.map((feature, index) => {
-            // Bento layout classes
+            // Bento layout classes - fits exactly in md:grid-cols-3
             const bentoSpans = [
-              "md:col-span-2 md:row-span-2 flex-col justify-between", // 1st: Large feature
-              "md:col-span-1 md:row-span-1",                            // 2nd: Normal
-              "md:col-span-1 md:row-span-1",                            // 3rd: Normal
-              "md:col-span-1 md:row-span-1",                            // 4th: Normal
-              "md:col-span-2 md:row-span-1 flex-row items-center gap-6",// 5th: Wide horizontal
-              "md:col-span-1 md:row-span-1",                            // 6th: Normal
+              "md:col-span-2 md:row-span-2 flex-col justify-between", // 1st: Large feature (Takes 4 cells)
+              "md:col-span-1",                                          // 2nd: Normal (Takes 1 cell)
+              "md:col-span-1",                                          // 3rd: Normal (Takes 1 cell)
+              "md:col-span-1",                                          // 4th: Normal (Takes 1 cell)
+              "md:col-span-1",                                          // 5th: Normal (Takes 1 cell)
+              "md:col-span-1",                                          // 6th: Normal (Takes 1 cell)
             ];
             
             const isLarge = index === 0;
-            const isWide = index === 4;
 
             return (
               <motion.div
@@ -88,15 +87,15 @@ const Features = () => {
                 {/* Glow effect behind card on hover */}
                 <div className="absolute -inset-0.5 rounded-3xl bg-gradient-to-br from-primary/10 to-accent/10 opacity-0 blur focus-within:opacity-100 transition duration-500 group-hover:opacity-100" />
                 
-                <div className={`glass-card-hover relative flex w-full flex-col rounded-3xl p-8 shadow-sm group-hover:shadow-neon transition-all duration-300 bg-secondary/20 hover:bg-secondary/40 border border-white/5 ${isWide ? 'md:flex-row md:items-center' : ''}`}>
+                <div className={`glass-card-hover relative flex w-full flex-col rounded-3xl p-8 shadow-sm group-hover:shadow-neon transition-all duration-300 bg-secondary/20 hover:bg-secondary/40 border border-white/5`}>
                   <div 
-                    className={`flex items-center justify-center rounded-2xl transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3 shadow-inner ${isLarge ? 'h-16 w-16 mb-8' : isWide ? 'h-14 w-14 mb-0 shrink-0' : 'h-12 w-12 mb-6'}`}
+                    className={`flex items-center justify-center rounded-2xl transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3 shadow-inner ${isLarge ? 'h-16 w-16 mb-8' : 'h-12 w-12 mb-6'}`}
                     style={{ background: 'var(--gradient-card)' }}
                   >
-                    <feature.icon className={`${isLarge ? 'h-8 w-8' : isWide ? 'h-6 w-6' : 'h-6 w-6'} text-primary drop-shadow-md`} />
+                    <feature.icon className={`${isLarge ? 'h-8 w-8' : 'h-6 w-6'} text-primary drop-shadow-md`} />
                   </div>
                   
-                  <div className={isWide ? 'ml-6' : ''}>
+                  <div>
                     <h3 className={`font-display font-medium text-foreground tracking-tight ${isLarge ? 'text-2xl mt-auto' : 'text-lg'}`}>
                       {feature.title}
                     </h3>

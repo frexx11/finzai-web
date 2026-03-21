@@ -52,7 +52,7 @@ const WhatIsFinzai = () => {
           </p>
         </motion.div>
 
-        <div className="mx-auto mt-20 grid max-w-4xl gap-6 sm:grid-cols-2">
+        <div className="mx-auto mt-20 grid w-full max-w-[1400px] gap-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-8">
           {capabilities.map((item, index) => (
             <motion.div
               key={item.title}

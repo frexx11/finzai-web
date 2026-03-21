@@ -46,7 +46,7 @@ const Philosophy = () => {
           </h2>
         </motion.div>
 
-        <div className="mx-auto mt-20 max-w-2xl space-y-0">
+        <div className="mx-auto mt-20 grid w-full max-w-[1400px] gap-8 lg:grid-cols-2 lg:gap-x-24">
           {principles.map((principle, index) => (
             <motion.div
               key={principle.number}
@@ -54,8 +54,7 @@ const Philosophy = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.5, delay: index * 0.1, ease: "easeOut" }}
-              className="group relative flex gap-8 py-10"
-              style={{ borderBottom: '1px solid hsl(210 14% 91% / 0.06)' }}
+              className="group relative flex gap-8 py-10 border-b border-white/5"
             >
               {/* Number */}
               <span 

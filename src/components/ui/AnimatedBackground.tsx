@@ -1,83 +1,71 @@
 import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
 
 export const AnimatedBackground = () => {
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      setMousePosition({
-        x: e.clientX,
-        y: e.clientY,
-      });
-    };
-
-    window.addEventListener("mousemove", handleMouseMove);
-    return () => window.removeEventListener("mousemove", handleMouseMove);
-  }, []);
-
   return (
     <div className="fixed inset-0 z-[-1] overflow-hidden bg-[#09090b]">
-      {/* Heavy Cyber Grid - Slowly moving upwards */}
-      <motion.div 
-        className="absolute inset-[-100%] opacity-[0.08]" 
-        animate={{ 
-          y: [0, -50],
-        }}
-        transition={{ 
-          repeat: Infinity, 
-          duration: 20, 
-          ease: "linear" 
-        }}
-        style={{ 
-          backgroundImage: `linear-gradient(to right, hsl(var(--neon-cyan)) 1px, transparent 1px), linear-gradient(to bottom, hsl(var(--neon-cyan)) 1px, transparent 1px)`,
-          backgroundSize: '80px 80px',
-          maskImage: 'radial-gradient(circle at center, black 20%, transparent 80%)',
-          WebkitMaskImage: 'radial-gradient(circle at center, black 20%, transparent 80%)'
-        }} 
-      />
+      {/* 
+        FLUID MESH GRADIENT BLOBS 
+        Inspired by the premium Dribbble reference (Way Stars vibe).
+        No grids. Just massive, smooth, overlapping colorful blurorbs.
+      */}
 
-      {/* Primary Cyan Orb - Follows mouse slightly and floats */}
+      {/* Blob 1: Deep Indigo / Purple (Left side) */}
       <motion.div
-        className="absolute h-[600px] w-[600px] rounded-full blur-[120px]"
-        style={{ background: 'radial-gradient(circle, hsl(var(--neon-cyan) / 0.15) 0%, transparent 70%)' }}
+        className="absolute left-[-10%] top-[-10%] h-[120vh] w-[80vw] rounded-full blur-[160px]"
+        style={{ background: 'radial-gradient(circle, rgba(67, 19, 181, 0.3) 0%, rgba(67, 19, 181, 0.1) 40%, transparent 70%)' }}
         animate={{
-          x: mousePosition.x * 0.1,
-          y: mousePosition.y * 0.1,
-          scale: [1, 1.2, 1],
-        }}
-        transition={{
-          scale: { repeat: Infinity, duration: 8, ease: "easeInOut" },
-          x: { type: "spring", stiffness: 50, damping: 20 },
-          y: { type: "spring", stiffness: 50, damping: 20 }
-        }}
-      />
-
-      {/* Secondary Purple Orb - Opposite corner, breathes */}
-      <motion.div
-        className="absolute bottom-0 right-0 h-[800px] w-[800px] rounded-full blur-[150px]"
-        style={{ background: 'radial-gradient(circle, hsl(var(--neon-purple) / 0.12) 0%, transparent 70%)' }}
-        animate={{
-          x: [0, -100, 50, 0],
-          y: [0, -50, -100, 0],
+          x: [0, 60, -30, 0],
+          y: [0, -40, 50, 0],
+          scale: [1, 1.05, 0.95, 1],
         }}
         transition={{
           repeat: Infinity,
           duration: 25,
-          ease: "linear"
+          ease: "easeInOut"
         }}
       />
 
-      {/* Deep dark gradient overlay to ensure text is readable always */}
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/40 to-background" />
-      
-      {/* Noise filter for texture (Nano Banana style) */}
-      <div 
-        className="absolute inset-0 opacity-[0.02]" 
-        style={{ 
-          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")` 
+      {/* Blob 2: Warm Gold / Orange (Right center) */}
+      <motion.div
+        className="absolute right-[-5%] top-[10%] h-[100vh] w-[70vw] rounded-full blur-[150px]"
+        style={{ background: 'radial-gradient(circle, rgba(232, 120, 52, 0.2) 0%, rgba(220, 80, 20, 0.1) 50%, transparent 70%)' }}
+        animate={{
+          x: [0, -80, 40, 0],
+          y: [0, 70, -30, 0],
+          scale: [1, 1.1, 0.9, 1],
+        }}
+        transition={{
+          repeat: Infinity,
+          duration: 30,
+          ease: "easeInOut"
         }}
       />
+
+      {/* Blob 3: Deep Blue (Bottom left) */}
+      <motion.div
+        className="absolute bottom-[-20%] left-[10%] h-[80vh] w-[90vw] rounded-[100%] blur-[180px]"
+        style={{ background: 'radial-gradient(ellipse, rgba(20, 40, 150, 0.25) 0%, transparent 60%)' }}
+        animate={{
+          x: [0, 40, -50, 0],
+          y: [0, -30, 60, 0],
+        }}
+        transition={{
+          repeat: Infinity,
+          duration: 20,
+          ease: "easeInOut"
+        }}
+      />
+
+      {/* Subtle Noise Texture Overlay to bind the gradients nicely */}
+      <div 
+        className="absolute inset-0 z-[1] opacity-[0.03] mix-blend-overlay pointer-events-none" 
+        style={{ 
+          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")` 
+        }}
+      />
+      
+      {/* Vignette Overlay (darkens edges) */}
+      <div className="absolute inset-0 z-[2] bg-[radial-gradient(circle_at_center,transparent_0%,rgba(9,9,11,0.6)_100%)] pointer-events-none" />
     </div>
   );
 };

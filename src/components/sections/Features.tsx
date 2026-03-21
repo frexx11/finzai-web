@@ -61,19 +61,24 @@ const Features = () => {
           </p>
         </motion.div>
 
-        <div className="mx-auto mt-20 grid max-w-5xl gap-6 md:grid-cols-3 lg:gap-8">
+        <div className="mx-auto mt-20 grid w-full max-w-[1400px] gap-6 md:grid-cols-3 xl:gap-8">
           {features.map((feature, index) => {
-            // Bento layout classes - fits exactly in md:grid-cols-3
+            // New expansive Bento layout: 
+            // Row 1: 2 cols | 1 col
+            // Row 2: 1 col | 1 col | 1 col
+            // Row 3: 3 cols (full width banner)
             const bentoSpans = [
-              "md:col-span-2 md:row-span-2 flex-col justify-between", // 1st: Large feature (Takes 4 cells)
-              "md:col-span-1",                                          // 2nd: Normal (Takes 1 cell)
-              "md:col-span-1",                                          // 3rd: Normal (Takes 1 cell)
-              "md:col-span-1",                                          // 4th: Normal (Takes 1 cell)
-              "md:col-span-1",                                          // 5th: Normal (Takes 1 cell)
-              "md:col-span-1",                                          // 6th: Normal (Takes 1 cell)
+              "md:col-span-2", // 0: Large horizontal
+              "md:col-span-1", // 1: Square
+              "md:col-span-1", // 2: Square
+              "md:col-span-1", // 3: Square
+              "md:col-span-1", // 4: Square
+              "md:col-span-3", // 5: Full width banner
             ];
             
-            const isLarge = index === 0;
+            const isWide = index === 0;
+            const isFull = index === 5;
+            const isHorizontal = isWide || isFull;
 
             return (
               <motion.div
@@ -87,25 +92,25 @@ const Features = () => {
                 {/* Glow effect behind card on hover */}
                 <div className="absolute -inset-0.5 rounded-3xl bg-gradient-to-br from-primary/10 to-accent/10 opacity-0 blur focus-within:opacity-100 transition duration-500 group-hover:opacity-100" />
                 
-                <div className={`glass-card-hover relative flex w-full flex-col rounded-3xl p-8 shadow-sm group-hover:shadow-neon transition-all duration-300 bg-secondary/20 hover:bg-secondary/40 border border-white/5`}>
+                <div className={`glass-card-hover relative flex w-full flex-col rounded-3xl p-8 shadow-sm group-hover:shadow-neon transition-all duration-300 bg-secondary/20 hover:bg-secondary/40 border border-white/5 h-full ${isHorizontal ? 'md:flex-row md:items-center' : ''}`}>
                   <div 
-                    className={`flex items-center justify-center rounded-2xl transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3 shadow-inner ${isLarge ? 'h-16 w-16 mb-8' : 'h-12 w-12 mb-6'}`}
+                    className={`flex items-center justify-center rounded-2xl transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3 shadow-inner ${isHorizontal ? 'h-20 w-20 mb-0 shrink-0 mr-8' : 'h-14 w-14 mb-6 shrink-0'}`}
                     style={{ background: 'var(--gradient-card)' }}
                   >
-                    <feature.icon className={`${isLarge ? 'h-8 w-8' : 'h-6 w-6'} text-primary drop-shadow-md`} />
+                    <feature.icon className={`${isHorizontal ? 'h-10 w-10' : 'h-7 w-7'} text-primary drop-shadow-md`} />
                   </div>
                   
-                  <div>
-                    <h3 className={`font-display font-medium text-foreground tracking-tight ${isLarge ? 'text-2xl mt-auto' : 'text-lg'}`}>
+                  <div className="flex flex-col justify-center">
+                    <h3 className={`font-display font-medium text-foreground tracking-tight ${isHorizontal ? 'text-2xl' : 'text-xl'}`}>
                       {feature.title}
                     </h3>
-                    <p className={`text-muted-foreground ${isLarge ? 'mt-4 text-base leading-relaxed' : 'mt-3 text-sm leading-[1.8]'}`}>
+                    <p className={`text-muted-foreground ${isHorizontal ? 'mt-3 text-base leading-relaxed max-w-2xl' : 'mt-4 text-sm leading-[1.8]'}`}>
                       {feature.description}
                     </p>
                   </div>
                   
-                  {isLarge && (
-                    <div className="absolute top-8 right-8 h-32 w-32 rounded-full bg-primary/5 blur-[80px]" />
+                  {isHorizontal && (
+                    <div className="absolute right-0 top-0 h-full w-full max-w-sm rounded-[100%] bg-primary/5 blur-[100px] pointer-events-none" />
                   )}
                 </div>
               </motion.div>

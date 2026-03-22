@@ -15,10 +15,10 @@ const buttonVariants = cva(
         secondary: "bg-secondary text-secondary-foreground hover:bg-secondary/80",
         ghost: "hover:bg-secondary hover:text-secondary-foreground",
         link: "text-primary underline-offset-4 hover:underline",
-        // Finzai brand variants
-        intelligence: "bg-intelligence-blue text-off-white hover:bg-intelligence-blue/90 shadow-lg hover:shadow-xl hover:shadow-intelligence-blue/20 transition-all duration-300",
+        // Finzai brand variants - High Impact CTAs
+        intelligence: "bg-gradient-to-r from-primary to-accent text-white font-bold shadow-neon hover:shadow-glow hover:-translate-y-0.5 transition-all duration-300 border border-white/20 hover:border-white/40",
         subtle: "bg-secondary/50 text-foreground border border-border/50 hover:bg-secondary hover:border-border",
-        accent: "bg-steel-cyan text-graphite hover:bg-steel-cyan/90 font-medium",
+        accent: "bg-secondary text-secondary-foreground hover:bg-secondary/90 font-medium",
       },
       size: {
         default: "h-10 px-4 py-2",

@@ -1,0 +1,3 @@
+﻿20ddb09 feat: Add core landing page sections and UI components including Navbar, AnimatedBackground, WhatIsFinzai, Features, and Philosophy.
+7a51d58 feat: Initialize core application layout with Navbar, Features section, and custom design system.
+899e25c feat: Initialize the Finzai web application with core pages, UI components, and development infrastructure.

@@ -1,4 +1,4 @@
-@tailwind base;
+﻿@tailwind base;
 @tailwind components;
 @tailwind utilities;
 
@@ -11,63 +11,59 @@
 
 @layer base {
   :root {
-    /* Engie Designs Palette */
-    /* Black Pearl: #1E262F -> 212 22% 15% */
-    /* Into the Stratosphere: #415365 -> 210 22% 33% */
-    /* Blue Prince: #697F93 -> 210 18% 49% */
-    /* Wet Pavement: #9D9F97 -> 75 3% 60% */
-    /* Soft Secret: #D6D4C9 -> 51 11% 81% */
+    /* Finzai Cyber-Fintech Palette */
+    --deep-space: 240 10% 4%; /* #09090b - True Dark */
+    --cyber-black: 240 10% 6%; /* slightly lighter for cards */
+    --neon-cyan: 180 100% 50%; /* #00ffff */
+    --neon-purple: 270 100% 60%; /* #9d00ff */
+    --off-white: 0 0% 95%;
+    --muted-grey: 240 5% 65%;
+    
+    /* Semantic tokens */
+    --background: var(--deep-space);
+    --foreground: var(--off-white);
 
-    --background: 212 22% 15%;
-    --foreground: 51 11% 81%;
+    --card: var(--cyber-black);
+    --card-foreground: var(--off-white);
 
-    --card: 210 22% 20%;
-    --card-foreground: 51 11% 81%;
+    --popover: var(--cyber-black);
+    --popover-foreground: var(--off-white);
 
-    --popover: 210 22% 20%;
-    --popover-foreground: 51 11% 81%;
+    --primary: var(--neon-cyan);
+    --primary-foreground: 240 10% 4%; /* inverted for contrast */
 
-    --primary: 210 18% 49%;
-    --primary-foreground: 212 22% 15%;
+    --secondary: 240 10% 10%;
+    --secondary-foreground: var(--off-white);
 
-    --secondary: 210 22% 33%;
-    --secondary-foreground: 51 11% 81%;
+    --muted: 240 10% 12%;
+    --muted-foreground: var(--muted-grey);
 
-    --muted: 210 22% 24%;
-    --muted-foreground: 75 3% 60%;
+    --accent: var(--neon-purple);
+    --accent-foreground: var(--off-white);
 
-    --accent: 75 3% 60%;
-    --accent-foreground: 212 22% 15%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: var(--off-white);
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 98%;
+    --border: 240 10% 12%;
+    --input: 240 10% 12%;
+    --ring: var(--neon-cyan);
 
-    --border: 210 22% 33%;
-    --input: 210 22% 33%;
-    --ring: 210 18% 49%;
-
-    --radius: 1rem;
-
-    /* Custom Finzai Brand Colors - overriding to match new palette */
-    --intelligence-blue: 210 18% 49%;
-    --steel-cyan: 75 3% 60%;
-    --deep-obsidian: 212 22% 15%;
-    --graphite: 212 22% 15%;
-    --off-white: 51 11% 81%;
+    --radius: 1rem; /* Softer, rounder for bento box feel */
 
     /* Typography */
     --font-display: 'Space Grotesk', sans-serif;
     --font-body: 'Inter', sans-serif;
 
-    /* Gradients adapted */
-    --gradient-intelligence: linear-gradient(135deg, hsl(var(--intelligence-blue)) 0%, hsl(var(--steel-cyan)) 100%);
-    --gradient-subtle: linear-gradient(180deg, hsl(var(--deep-obsidian)) 0%, hsl(var(--graphite)) 100%);
-    --gradient-card: linear-gradient(135deg, rgba(105, 127, 147, 0.15) 0%, rgba(65, 83, 101, 0.15) 100%);
-    --gradient-glow: radial-gradient(circle at center, rgba(105, 127, 147, 0.15) 0%, transparent 70%);
-    --gradient-bento-border: linear-gradient(135deg, hsl(var(--intelligence-blue) / 0.5) 0%, transparent 50%, hsl(var(--steel-cyan) / 0.5) 100%);
+    /* Gradients - Premium, vibrant, deep */
+    --gradient-intelligence: linear-gradient(135deg, hsl(var(--neon-cyan)) 0%, hsl(var(--neon-purple)) 100%);
+    --gradient-subtle: linear-gradient(180deg, hsl(var(--deep-space)) 0%, hsl(var(--cyber-black)) 100%);
+    --gradient-card: linear-gradient(145deg, hsl(var(--cyber-black) / 0.8) 0%, hsl(var(--deep-space) / 0.4) 100%);
+    --gradient-glow: radial-gradient(circle at center, hsl(var(--neon-cyan) / 0.15) 0%, hsl(var(--neon-purple) / 0.05) 40%, transparent 70%);
+    --gradient-bento-border: linear-gradient(135deg, hsl(var(--neon-cyan) / 0.5) 0%, transparent 50%, hsl(var(--neon-purple) / 0.5) 100%);
     
     /* Shadows - Deep, multi-layered */
     --shadow-soft: 0 8px 32px -8px hsl(0 0% 0% / 0.8), 0 2px 8px -2px hsl(0 0% 0% / 0.5);
+    --shadow-glow: 0 0 80px -20px hsl(var(--neon-cyan) / 0.25), 0 0 40px -10px hsl(var(--neon-purple) / 0.15);
     --shadow-neon: 0 0 15px -3px hsl(var(--neon-cyan) / 0.4);
 
     /* Spacing rhythm */

@@ -5,31 +5,35 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { useLanguage } from "@/contexts/LanguageContext";
 
-const faqs = [
+const getFaqs = (t: any) => [
   {
-    question: "What exactly is Finzai?",
-    answer: "Finzai is a proactive AI investment agent that learns your financial profile — your goals, risk tolerance, and preferences — to deliver personalized, real-time market insights and recommendations.",
+    question: t('faq.q1'),
+    answer: t('faq.a1'),
   },
   {
-    question: "Is Finzai a trading platform?",
-    answer: "No. Finzai is an intelligence layer, not a broker. We provide the insights and analysis; you make the decisions and execute trades on your preferred platform.",
+    question: t('faq.q2'),
+    answer: t('faq.a2'),
   },
   {
-    question: "How does personalization work?",
-    answer: "When you onboard, Finzai builds a comprehensive profile based on your financial goals, risk appetite, investment timeline, and market interests. Every insight is filtered through this lens.",
+    question: t('faq.q3'),
+    answer: t('faq.a3'),
   },
   {
-    question: "Is my financial data safe?",
-    answer: "Absolutely. We use end-to-end encryption, never sell your data, and follow the strictest privacy standards. Your financial information is yours — always.",
+    question: t('faq.q4'),
+    answer: t('faq.a4'),
   },
   {
-    question: "When will Finzai launch?",
-    answer: "We're currently in development with early access planned soon. Join our waitlist to be among the first to experience Finzai.",
+    question: t('faq.q5'),
+    answer: t('faq.a5'),
   },
 ];
 
 const FAQ = () => {
+  const { t } = useLanguage();
+  const faqs = getFaqs(t);
+
   return (
     <section id="faq" className="relative py-32 lg:py-40">
       {/* Top divider */}
@@ -44,11 +48,11 @@ const FAQ = () => {
           className="mx-auto max-w-2xl text-center"
         >
           <span className="text-[11px] font-medium uppercase tracking-[0.2em] text-accent">
-            FAQ
+            {t('faq.badge')}
           </span>
           <h2 className="mt-5 font-display text-3xl font-medium tracking-tight sm:text-4xl lg:text-[2.75rem]" style={{ letterSpacing: '-0.02em' }}>
-            Common{" "}
-            <span className="text-gradient">questions.</span>
+            {t('faq.title1')}{" "}
+            <span className="text-gradient">{t('faq.title2')}</span>
           </h2>
         </motion.div>
 

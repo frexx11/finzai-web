@@ -1,30 +1,34 @@
 import { motion } from "framer-motion";
 import { Brain, TrendingUp, Shield, Bell } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
-const capabilities = [
+const getCapabilities = (t: any) => [
   {
     icon: Brain,
-    title: "AI-Powered Analysis",
-    description: "Advanced algorithms that learn your investment style and risk tolerance to deliver truly personalized insights.",
+    title: t('platform.cap1Title'),
+    description: t('platform.cap1Desc'),
   },
   {
     icon: TrendingUp,
-    title: "Market Intelligence",
-    description: "Real-time monitoring of market conditions, trends, and opportunities aligned with your portfolio goals.",
+    title: t('platform.cap2Title'),
+    description: t('platform.cap2Desc'),
   },
   {
     icon: Shield,
-    title: "Risk Management",
-    description: "Proactive risk assessment that adapts to changing market dynamics and your evolving financial objectives.",
+    title: t('platform.cap3Title'),
+    description: t('platform.cap3Desc'),
   },
   {
     icon: Bell,
-    title: "Smart Notifications",
-    description: "Timely, actionable alerts — not noise. Only the insights that matter for your specific investment strategy.",
+    title: t('platform.cap4Title'),
+    description: t('platform.cap4Desc'),
   },
 ];
 
 const WhatIsFinzai = () => {
+  const { t } = useLanguage();
+  const capabilities = getCapabilities(t);
+
   return (
     <section id="what-is-finzai" className="relative py-32 lg:py-40">
       {/* Top divider */}
@@ -39,16 +43,14 @@ const WhatIsFinzai = () => {
           className="mx-auto max-w-2xl text-center"
         >
           <span className="text-[11px] font-medium uppercase tracking-[0.2em] text-accent">
-            The Platform
+            {t('platform.badge')}
           </span>
           <h2 className="mt-5 font-display text-3xl font-medium tracking-tight sm:text-4xl lg:text-[2.75rem]" style={{ letterSpacing: '-0.02em' }}>
-            Intelligence that works{" "}
-            <span className="text-gradient">for you.</span>
+            {t('platform.title1')}{" "}
+            <span className="text-gradient">{t('platform.title2')}</span>
           </h2>
           <p className="mx-auto mt-5 max-w-lg text-base leading-[1.8] text-muted-foreground">
-            Finzai is not another trading tool. It's a proactive AI agent that 
-            understands your financial profile and delivers clarity in a world 
-            of market noise.
+            {t('platform.desc')}
           </p>
         </motion.div>
 

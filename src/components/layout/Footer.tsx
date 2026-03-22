@@ -1,13 +1,17 @@
 import finzaiLogo from "@/assets/finzai-logo-light.png";
+import { useLanguage } from "@/contexts/LanguageContext";
 
-const footerLinks = [
-  { href: "#what-is-finzai", label: "What is Finzai" },
-  { href: "#features", label: "Features" },
-  { href: "#philosophy", label: "Philosophy" },
-  { href: "#faq", label: "FAQ" },
+const getFooterLinks = (t: any) => [
+  { href: "#what-is-finzai", label: t('nav.platform') },
+  { href: "#features", label: t('nav.features') },
+  { href: "#philosophy", label: t('nav.philosophy') },
+  { href: "#faq", label: t('nav.faq') },
 ];
 
 const Footer = () => {
+  const { t } = useLanguage();
+  const footerLinks = getFooterLinks(t);
+
   return (
     <footer className="relative py-12">
       <div className="section-divider absolute left-0 right-0 top-0" />

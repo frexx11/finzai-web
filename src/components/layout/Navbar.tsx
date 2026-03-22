@@ -1,23 +1,30 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Menu } from "lucide-react";
+import { Menu, Globe } from "lucide-react";
 import finzaiLogo from "@/assets/finzai-logo-light.png";
 import { Button } from "@/components/ui/button";
+import { useLanguage } from "@/contexts/LanguageContext";
 import {
   Sheet,
   SheetContent,
   SheetTrigger,
 } from "@/components/ui/sheet";
 
-const navLinks = [
-  { href: "#what-is-finzai", label: "What is Finzai" },
-  { href: "#features", label: "Features" },
-  { href: "#philosophy", label: "Philosophy" },
-  { href: "#faq", label: "FAQ" },
+const getNavLinks = (t: any) => [
+  { href: "#what-is-finzai", label: t('nav.platform') },
+  { href: "#features", label: t('nav.features') },
+  { href: "#philosophy", label: t('nav.philosophy') },
+  { href: "#faq", label: t('nav.faq') },
 ];
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
+  const { t, language, setLanguage } = useLanguage();
+  const navLinks = getNavLinks(t);
+
+  const toggleLanguage = () => {
+    setLanguage(language === 'es' ? 'en' : 'es');
+  };
 
   return (
     <motion.nav
@@ -49,10 +56,21 @@ const Navbar = () => {
           ))}
         </div>
 
-        {/* Desktop CTA */}
-        <div className="hidden md:block">
+        {/* Desktop CTA & Lang Toggle */}
+        <div className="hidden md:flex items-center gap-2">
+          <Button 
+            variant="ghost" 
+            size="sm" 
+            onClick={toggleLanguage} 
+            className="px-2 text-muted-foreground hover:text-foreground hover:bg-white/5 transition-colors"
+            title="Change language"
+          >
+            <Globe className="w-4 h-4 mr-1.5 opacity-70" />
+            <span className="text-[12px] font-semibold tracking-wider">{language === 'es' ? 'EN' : 'ES'}</span>
+          </Button>
+          <div className="w-px h-4 bg-border/40 mx-1" />
           <Button variant="subtle" size="sm" asChild>
-            <a href="#stay-updated" className="text-[13px]">Get Early Access</a>
+            <a href="#stay-updated" className="text-[13px]">{t('nav.earlyAccess')}</a>
           </Button>
         </div>
 
@@ -75,10 +93,19 @@ const Navbar = () => {
                   {link.label}
                 </a>
               ))}
-              <div className="mt-6 px-4">
+              <div className="mt-6 px-4 flex flex-col gap-3">
+                <Button 
+                  variant="ghost" 
+                  size="sm" 
+                  onClick={() => { toggleLanguage(); setOpen(false); }} 
+                  className="w-full border border-white/5 text-muted-foreground justify-center"
+                >
+                  <Globe className="w-4 h-4 mr-2 opacity-70" />
+                  {language === 'es' ? 'Switch to English' : 'Cambiar a Español'}
+                </Button>
                 <Button variant="intelligence" size="lg" asChild className="w-full">
                   <a href="#stay-updated" onClick={() => setOpen(false)}>
-                    Get Early Access
+                    {t('nav.earlyAccess')}
                   </a>
                 </Button>
               </div>

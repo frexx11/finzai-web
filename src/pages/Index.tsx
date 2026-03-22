@@ -1,5 +1,6 @@
 import Navbar from "@/components/layout/Navbar";
 import Hero from "@/components/sections/Hero";
+import SocialProof from "@/components/sections/SocialProof";
 import WhatIsFinzai from "@/components/sections/WhatIsFinzai";
 import Features from "@/components/sections/Features";
 import Philosophy from "@/components/sections/Philosophy";
@@ -15,6 +16,7 @@ const Index = () => {
       <Navbar />
       <main className="relative z-10">
         <Hero />
+        <SocialProof />
         <WhatIsFinzai />
         <Features />
         <Philosophy />

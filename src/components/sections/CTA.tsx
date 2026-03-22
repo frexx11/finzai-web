@@ -4,6 +4,7 @@ import { Input } from "@/components/ui/input";
 import { ArrowRight, Mail, CheckCircle } from "lucide-react";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const N8N_WEBHOOK_URL = "https://andrea-nuclio.app.n8n.cloud/webhook/finzai-registro";
 
@@ -12,6 +13,7 @@ const CTA = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const { toast } = useToast();
+  const { t } = useLanguage();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -41,28 +43,28 @@ const CTA = () => {
         
         if (data.message?.includes("Ya estás al día")) {
           toast({
-            title: "Already registered",
-            description: "You're already on the list — no need to sign up again!",
+            title: "Ya estás en la lista",
+            description: "¡Ya te apuntaste! No hace falta que lo hagas de nuevo.",
           });
         } else {
           setIsSuccess(true);
           toast({
-            title: "You're on the list!",
-            description: "Check your email for confirmation.",
+            title: "¡Estás dentro!",
+            description: "Revisa tu correo para confirmar el acceso.",
           });
         }
         setEmail("");
       } else {
         toast({
-          title: "Something went wrong",
-          description: "Please try again later.",
+          title: "Algo ha fallado",
+          description: "Por favor, inténtalo de nuevo más tarde.",
           variant: "destructive",
         });
       }
     } catch {
       toast({
-        title: "Something went wrong",
-        description: "Please try again later.",
+        title: "Algo ha fallado",
+        description: "Por favor, inténtalo de nuevo más tarde.",
         variant: "destructive",
       });
     }
@@ -91,8 +93,8 @@ const CTA = () => {
             className="font-display text-2xl font-medium tracking-tight sm:text-3xl lg:text-4xl"
             style={{ letterSpacing: '-0.02em' }}
           >
-            Be the first to{" "}
-            <span className="text-gradient">experience Finzai.</span>
+            {t('cta.title1')}{" "}
+            <span className="text-gradient hover-trigger">{t('cta.title2')}</span>
           </motion.h2>
           <motion.p 
             initial={{ opacity: 0, y: 10 }}
@@ -101,7 +103,7 @@ const CTA = () => {
             transition={{ duration: 0.6, delay: 0.3 }}
             className="mx-auto mt-4 max-w-md text-base leading-[1.7] text-muted-foreground"
           >
-            Join our early access list for exclusive updates on launch and new features.
+            {t('cta.desc')}
           </motion.p>
 
           {isSuccess ? (
@@ -113,8 +115,8 @@ const CTA = () => {
               <div className="flex h-12 w-12 items-center justify-center rounded-full" style={{ background: 'hsl(174 58% 56% / 0.1)' }}>
                 <CheckCircle className="h-6 w-6 text-accent" />
               </div>
-              <p className="text-base font-medium text-foreground">You're on the list!</p>
-              <p className="text-sm text-muted-foreground">We'll be in touch soon.</p>
+              <p className="text-base font-medium text-foreground">{t('hero.successTitle')}</p>
+              <p className="text-sm text-muted-foreground">{t('hero.successDesc')}</p>
             </motion.div>
           ) : (
             <motion.form
@@ -123,7 +125,7 @@ const CTA = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.4 }}
-              className="mx-auto mt-10 flex w-full max-w-sm flex-col gap-3 sm:flex-row"
+              className="mx-auto mt-10 flex w-full max-w-lg flex-col gap-3 sm:flex-row"
             >
               <div className="relative flex-1 group">
                 {/* Subtle glow behind input */}
@@ -131,7 +133,7 @@ const CTA = () => {
                 <Mail className="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-primary/80 z-10" />
                 <Input
                   type="email"
-                  placeholder="Enter your email"
+                  placeholder={t('hero.emailPlaceholder')}
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   className="relative h-14 w-full rounded-xl pl-12 pr-4 text-sm border-border/40 bg-secondary/40 backdrop-blur-md placeholder:text-muted-foreground focus:border-primary/50 focus:bg-secondary/60 transition-all duration-300 shadow-xl"
@@ -141,11 +143,13 @@ const CTA = () => {
               <Button 
                 type="submit" 
                 variant="intelligence" 
-                className="group relative h-14 rounded-xl px-8 text-sm font-medium shadow-soft hover:shadow-glow transition-all duration-500 overflow-hidden"
+                className="group relative h-14 rounded-xl px-8 text-[15px] hover:shadow-glow transition-all duration-500 overflow-hidden"
                 disabled={isSubmitting}
               >
-                {isSubmitting ? "Joining..." : "Get Access"}
-                <ArrowRight className="ml-1 h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-0.5" />
+                {/* Button shine effect */}
+                <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/20 to-transparent group-hover:animate-[shimmer_1.5s_infinite]" />
+                {isSubmitting ? t('hero.buttonProcessing') : t('hero.buttonIdle')}
+                <ArrowRight className="ml-2 h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-0.5" />
               </Button>
             </motion.form>
           )}
@@ -157,7 +161,7 @@ const CTA = () => {
             transition={{ duration: 0.5, delay: 0.6 }}
             className="mt-4 text-xs text-muted-foreground/50"
           >
-            No spam · Unsubscribe anytime
+            Sin spam · Cancela cuando quieras
           </motion.p>
         </motion.div>
       </div>

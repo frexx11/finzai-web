@@ -1,40 +1,115 @@
 import { motion } from "framer-motion";
-import { BarChart3, Fingerprint, Zap, Globe, Lock, LineChart } from "lucide-react";
+import { MessageCircle, LineChart, Zap, Fingerprint, Lock } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
-const features = [
+// Feature content aligned with Finzai-App capabilities
+const getFeatures = (t: any) => [
   {
-    icon: Fingerprint,
-    title: "Personal Profile Engine",
-    description: "Learns your risk tolerance, goals, and preferences to create a unique investment lens.",
-  },
-  {
-    icon: BarChart3,
-    title: "Deep Market Scanning",
-    description: "Continuously monitors thousands of data points across global markets in real-time.",
-  },
-  {
-    icon: Zap,
-    title: "Instant Insights",
-    description: "Delivers actionable recommendations the moment an opportunity or risk is detected.",
-  },
-  {
-    icon: Globe,
-    title: "Global Coverage",
-    description: "Access intelligence across equities, crypto, commodities, and emerging markets.",
-  },
-  {
-    icon: Lock,
-    title: "Privacy First",
-    description: "Your financial data stays yours. End-to-end encryption with zero data selling.",
+    icon: MessageCircle,
+    title: t('features.feat1Title'),
+    description: t('features.feat1Desc'),
+    colSpan: "md:col-span-2",
+    visual: () => (
+      <div className="absolute right-0 bottom-0 top-0 w-1/2 overflow-hidden hidden md:block rounded-r-2xl pointer-events-none">
+        <div className="absolute inset-0 bg-gradient-to-l from-primary/10 via-primary/5 to-transparent z-0" />
+        
+        {/* Mock Chat Interface Visual */}
+        <div className="absolute right-[-5%] top-[15%] w-[90%] space-y-5 select-none opacity-80 scale-105">
+           {/* User Message */}
+           <div className="bg-card border border-white/5 rounded-2xl rounded-tr-none p-5 w-[85%] shadow-lg transform translate-x-4">
+             <div className="flex gap-2 mb-3">
+                <div className="w-4 h-4 rounded-full bg-muted-foreground/30" />
+                <div className="h-3 w-32 bg-muted rounded-full" />
+             </div>
+             <div className="space-y-2">
+                <div className="h-2 w-full bg-muted/60 rounded-full" />
+                <div className="h-2 w-4/5 bg-muted/60 rounded-full" />
+             </div>
+           </div>
+           
+           {/* AI Response Message */}
+           <div className="bg-gradient-to-br from-primary/20 to-accent/10 backdrop-blur-md border border-primary/30 rounded-2xl rounded-tl-none p-5 w-[95%] ml-auto shadow-[0_0_30px_-5px_hsl(var(--primary)/0.3)] transform -translate-x-4">
+             <div className="flex items-center gap-3 mb-3">
+               <div className="h-5 w-5 rounded-full bg-primary flex items-center justify-center shadow-glow">
+                  <MessageCircle className="w-3 h-3 text-white" />
+               </div>
+               <div className="h-3 w-24 bg-primary/60 rounded-full" />
+             </div>
+             <div className="space-y-2.5">
+               <div className="h-2.5 w-full bg-primary/40 rounded-full" />
+               <div className="h-2.5 w-[90%] bg-primary/40 rounded-full" />
+               <div className="h-2.5 w-[70%] bg-primary/40 rounded-full" />
+             </div>
+           </div>
+        </div>
+      </div>
+    )
   },
   {
     icon: LineChart,
-    title: "Performance Tracking",
-    description: "Track how AI-driven insights perform over time with transparent analytics.",
+    title: t('features.feat2Title'),
+    description: t('features.feat2Desc'),
+    colSpan: "md:col-span-1",
+    visual: () => (
+       <div className="absolute inset-x-0 bottom-0 h-[60%] overflow-hidden opacity-40 select-none pointer-events-none rounded-b-2xl">
+         <div className="absolute inset-0 bg-gradient-to-t from-accent/20 to-transparent" />
+         <svg viewBox="0 0 100 50" preserveAspectRatio="none" className="absolute bottom-0 w-full h-full stroke-accent fill-accent/10 drop-shadow-[0_0_15px_rgba(0,255,255,0.5)]">
+           <path d="M0,50 L0,40 L15,35 L30,45 L50,25 L70,30 L90,10 L100,15 L100,50 Z" strokeWidth="1.5" strokeLinejoin="round" />
+         </svg>
+       </div>
+    )
   },
+  {
+    icon: Zap,
+    title: t('features.feat3Title'),
+    description: t('features.feat3Desc'),
+    colSpan: "md:col-span-1",
+    visual: () => (
+      <div className="absolute inset-0 overflow-hidden pointer-events-none rounded-2xl">
+        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 bg-primary/20 rounded-full blur-[50px] animate-pulse" />
+        
+        {/* Floating insight cards */}
+        <div className="absolute -right-4 -bottom-4 bg-card/80 backdrop-blur-sm border border-white/10 p-3 rounded-xl shadow-lg w-40 opacity-50 -rotate-12">
+            <div className="flex items-center gap-2 mb-2">
+                <Zap className="w-3 h-3 text-accent" />
+                <div className="h-1.5 w-16 bg-muted-foreground/30 rounded-full" />
+            </div>
+            <div className="h-1 w-full bg-muted/50 rounded-full mb-1" />
+            <div className="h-1 w-3/4 bg-muted/50 rounded-full" />
+        </div>
+      </div>
+    )
+  },
+  {
+    icon: Fingerprint,
+    title: t('features.feat4Title'),
+    description: t('features.feat4Desc'),
+    colSpan: "md:col-span-1",
+    visual: () => (
+      <div className="absolute right-[-15%] bottom-[-15%] w-56 h-56 opacity-[0.07] select-none pointer-events-none text-white transition-opacity duration-500 group-hover:opacity-[0.15]">
+         <Fingerprint className="w-full h-full" strokeWidth={0.5} />
+      </div>
+    )
+  },
+  {
+    icon: Lock,
+    title: t('features.feat5Title'),
+    description: t('features.feat5Desc'),
+    colSpan: "md:col-span-1",
+    visual: () => (
+      <div className="absolute inset-0 pointer-events-none rounded-2xl overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,hsl(var(--primary)/0.15),transparent_60%)] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+        {/* Matrix/Secure lines effect */}
+        <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'repeating-linear-gradient(0deg, transparent, transparent 2px, #fff 2px, #fff 4px)', backgroundSize: '100% 4px' }} />
+      </div>
+    )
+  }
 ];
 
 const Features = () => {
+  const { t } = useLanguage();
+  const features = getFeatures(t);
+
   return (
     <section id="features" className="relative py-32 lg:py-40">
       {/* Top divider */}
@@ -49,36 +124,47 @@ const Features = () => {
           className="mx-auto max-w-2xl text-center"
         >
           <span className="text-[11px] font-medium uppercase tracking-[0.2em] text-accent">
-            Features
+            {t('features.badge')}
           </span>
           <h2 className="mt-5 font-display text-3xl font-medium tracking-tight sm:text-4xl lg:text-[2.75rem]" style={{ letterSpacing: '-0.02em' }}>
-            Built for{" "}
-            <span className="text-gradient">serious investors.</span>
+            {t('features.title1')}{" "}
+            <span className="text-gradient hover-trigger">{t('features.title2')}</span>
           </h2>
           <p className="mx-auto mt-5 max-w-lg text-base leading-[1.8] text-muted-foreground">
-            Every feature is designed to reduce noise and amplify signal, 
-            giving you the edge you need in today's markets.
+            {t('features.desc')}
           </p>
         </motion.div>
 
-        <div className="mx-auto mt-20 grid w-full max-w-[1400px] gap-6 md:grid-cols-3 xl:gap-8">
+        {/* Highlighted Introductor Block */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="mx-auto mt-16 max-w-[1200px] relative rounded-2xl p-px overflow-hidden group"
+        >
+          {/* Animated gradient border */}
+          <div className="absolute inset-0 bg-gradient-to-r from-accent/0 via-accent/50 to-primary/0 group-hover:via-accent transition-opacity duration-1000 opacity-50" />
+          
+          <div className="relative bg-card/90 backdrop-blur-md rounded-[15px] p-8 md:p-10 flex flex-col md:flex-row items-center gap-8 border border-white/5">
+            <div className="flex-1">
+              <h3 className="font-display text-2xl md:text-3xl font-medium text-foreground mb-4">
+                {t('features.highlightTitle1')} <span className="text-muted-foreground">{t('features.highlightTitle2')}</span>
+              </h3>
+              <p className="text-muted-foreground leading-relaxed text-base md:text-lg">
+                {t('features.highlightDesc')}
+              </p>
+            </div>
+            <div className="shrink-0 flex items-center justify-center w-16 h-16 rounded-full bg-accent/10 border border-accent/20 text-accent">
+               <Zap className="w-8 h-8 group-hover:scale-110 transition-transform duration-500" />
+            </div>
+          </div>
+        </motion.div>
+
+        {/* 5-Card Bento Box Grid */}
+        <div className="mx-auto mt-20 grid w-full max-w-[1200px] gap-6 md:grid-cols-3 xl:gap-8 auto-rows-fr">
           {features.map((feature, index) => {
-            // New expansive Bento layout: 
-            // Row 1: 2 cols | 1 col
-            // Row 2: 1 col | 1 col | 1 col
-            // Row 3: 3 cols (full width banner)
-            const bentoSpans = [
-              "md:col-span-2", // 0: Large horizontal
-              "md:col-span-1", // 1: Square
-              "md:col-span-1", // 2: Square
-              "md:col-span-1", // 3: Square
-              "md:col-span-1", // 4: Square
-              "md:col-span-3", // 5: Full width banner
-            ];
-            
             const isWide = index === 0;
-            const isFull = index === 5;
-            const isHorizontal = isWide || isFull;
 
             return (
               <motion.div
@@ -86,32 +172,33 @@ const Features = () => {
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-50px" }}
-                transition={{ duration: 0.5, delay: index * 0.08, ease: "easeOut" }}
-                className={`group relative flex ${bentoSpans[index]}`}
+                transition={{ duration: 0.5, delay: index * 0.1, ease: "easeOut" }}
+                className={`group relative flex ${feature.colSpan}`}
               >
-                {/* Glow effect behind card on hover */}
-                <div className="absolute -inset-0.5 rounded-3xl bg-gradient-to-br from-primary/10 to-accent/10 opacity-0 blur focus-within:opacity-100 transition duration-500 group-hover:opacity-100" />
+                {/* Glow effect behind card on focus/hover */}
+                <div className="absolute -inset-0.5 rounded-2xl bg-gradient-to-br from-primary/20 to-accent/20 opacity-0 blur-md focus-within:opacity-100 transition duration-500 group-hover:opacity-100 group-hover:blur-lg" />
                 
-                <div className={`glass-card-hover relative flex w-full flex-col rounded-3xl p-8 shadow-sm group-hover:shadow-neon transition-all duration-300 bg-secondary/20 hover:bg-secondary/40 border border-white/5 h-full ${isHorizontal ? 'md:flex-row md:items-center' : ''}`}>
-                  <div 
-                    className={`flex items-center justify-center rounded-2xl transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3 shadow-inner ${isHorizontal ? 'h-20 w-20 mb-0 shrink-0 mr-8' : 'h-14 w-14 mb-6 shrink-0'}`}
-                    style={{ background: 'var(--gradient-card)' }}
-                  >
-                    <feature.icon className={`${isHorizontal ? 'h-10 w-10' : 'h-7 w-7'} text-primary drop-shadow-md`} />
+                {/* Main Card Surface */}
+                <div className="relative flex w-full flex-col rounded-2xl p-8 sm:p-10 shadow-ambient transition-all duration-500 bg-card/80 backdrop-blur-sm border border-white/5 hover:border-white/10 hover:bg-card/90 overflow-hidden h-full z-10 group-hover:-translate-y-1">
+                  
+                  {/* Decorative internal visual block */}
+                  {feature.visual()}
+                  
+                  <div className={`relative z-20 flex flex-col h-full ${isWide ? 'md:w-1/2 md:pr-8' : ''}`}>
+                      <div className="flex items-center justify-center rounded-xl bg-gradient-to-br from-white/5 to-white/0 border border-white/10 h-14 w-14 mb-8 shrink-0 shadow-lg group-hover:shadow-glow transition-all duration-500">
+                        <feature.icon className="h-6 w-6 text-primary" />
+                      </div>
+                      
+                      <div className="flex flex-col mt-auto">
+                        <h3 className="font-display font-medium text-foreground tracking-tight text-xl mb-3">
+                          {feature.title}
+                        </h3>
+                        <p className="text-muted-foreground text-sm leading-[1.7] font-light">
+                          {feature.description}
+                        </p>
+                      </div>
                   </div>
                   
-                  <div className="flex flex-col justify-center">
-                    <h3 className={`font-display font-medium text-foreground tracking-tight ${isHorizontal ? 'text-2xl' : 'text-xl'}`}>
-                      {feature.title}
-                    </h3>
-                    <p className={`text-muted-foreground ${isHorizontal ? 'mt-3 text-base leading-relaxed max-w-2xl' : 'mt-4 text-sm leading-[1.8]'}`}>
-                      {feature.description}
-                    </p>
-                  </div>
-                  
-                  {isHorizontal && (
-                    <div className="absolute right-0 top-0 h-full w-full max-w-sm rounded-[100%] bg-primary/5 blur-[100px] pointer-events-none" />
-                  )}
                 </div>
               </motion.div>
             );

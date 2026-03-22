@@ -1,0 +1,224 @@
+﻿commit 7a51d58a2d68bb7f980f012bb929bbf7f97ff16f
+Author: frexx11 <alejandrofrme@gmail.com>
+Date:   Sat Mar 21 20:52:29 2026 +0100
+
+    feat: Initialize core application layout with Navbar, Features section, and custom design system.
+
+diff --git a/src/index.css b/src/index.css
+index 0bac779..20128cb 100644
+--- a/src/index.css
++++ b/src/index.css
+@@ -98,8 +98,9 @@
+   }
+ 
+   body {
+-    @apply bg-background text-foreground antialiased;
+-    font-family: var(--font-body);
++    @apply bg-background text-foreground tracking-wide;
++    font-feature-settings: "rlig" 1, "calt" 1;
++    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+   }
+ 
+   h1, h2, h3, h4, h5, h6 {
+
+commit 899e25c6abc693b3735e38edbc18d80af515ef7f
+Author: frexx11 <alejandrofrme@gmail.com>
+Date:   Sat Mar 21 20:52:18 2026 +0100
+
+    feat: Initialize the Finzai web application with core pages, UI components, and development infrastructure.
+
+diff --git a/src/index.css b/src/index.css
+new file mode 100644
+index 0000000..0bac779
+--- /dev/null
++++ b/src/index.css
+@@ -0,0 +1,189 @@
++@tailwind base;
++@tailwind components;
++@tailwind utilities;
++
++/* Finzai Design System
++   "Finzai looks like intelligence, not ambition."
++   Sobria, anal├¡tica, silenciosa, profesional.
++   All colors in HSL.
++*/
++
++
++@layer base {
++  :root {
++    /* Finzai Cyber-Fintech Palette */
++    --deep-space: 240 10% 4%; /* #09090b - True Dark */
++    --cyber-black: 240 10% 6%; /* slightly lighter for cards */
++    --neon-cyan: 180 100% 50%; /* #00ffff */
++    --neon-purple: 270 100% 60%; /* #9d00ff */
++    --off-white: 0 0% 95%;
++    --muted-grey: 240 5% 65%;
++    
++    /* Semantic tokens */
++    --background: var(--deep-space);
++    --foreground: var(--off-white);
++
++    --card: var(--cyber-black);
++    --card-foreground: var(--off-white);
++
++    --popover: var(--cyber-black);
++    --popover-foreground: var(--off-white);
++
++    --primary: var(--neon-cyan);
++    --primary-foreground: 240 10% 4%; /* inverted for contrast */
++
++    --secondary: 240 10% 10%;
++    --secondary-foreground: var(--off-white);
++
++    --muted: 240 10% 12%;
++    --muted-foreground: var(--muted-grey);
++
++    --accent: var(--neon-purple);
++    --accent-foreground: var(--off-white);
++
++    --destructive: 0 84% 60%;
++    --destructive-foreground: var(--off-white);
++
++    --border: 240 10% 12%;
++    --input: 240 10% 12%;
++    --ring: var(--neon-cyan);
++
++    --radius: 1rem; /* Softer, rounder for bento box feel */
++
++    /* Typography */
++    --font-display: 'Space Grotesk', sans-serif;
++    --font-body: 'Inter', sans-serif;
++
++    /* Gradients - Premium, vibrant, deep */
++    --gradient-intelligence: linear-gradient(135deg, hsl(var(--neon-cyan)) 0%, hsl(var(--neon-purple)) 100%);
++    --gradient-subtle: linear-gradient(180deg, hsl(var(--deep-space)) 0%, hsl(var(--cyber-black)) 100%);
++    --gradient-card: linear-gradient(145deg, hsl(var(--cyber-black) / 0.8) 0%, hsl(var(--deep-space) / 0.4) 100%);
++    --gradient-glow: radial-gradient(circle at center, hsl(var(--neon-cyan) / 0.15) 0%, hsl(var(--neon-purple) / 0.05) 40%, transparent 70%);
++    --gradient-bento-border: linear-gradient(135deg, hsl(var(--neon-cyan) / 0.5) 0%, transparent 50%, hsl(var(--neon-purple) / 0.5) 100%);
++    
++    /* Shadows - Deep, multi-layered */
++    --shadow-soft: 0 8px 32px -8px hsl(0 0% 0% / 0.8), 0 2px 8px -2px hsl(0 0% 0% / 0.5);
++    --shadow-glow: 0 0 80px -20px hsl(var(--neon-cyan) / 0.25), 0 0 40px -10px hsl(var(--neon-purple) / 0.15);
++    --shadow-neon: 0 0 15px -3px hsl(var(--neon-cyan) / 0.4);
++
++    /* Spacing rhythm */
++    --space-section: 8rem;
++    --space-block: 4rem;
++    
++    /* Sidebar tokens */
++    --sidebar-background: var(--cyber-black);
++    --sidebar-foreground: var(--off-white);
++    --sidebar-primary: var(--neon-cyan);
++    --sidebar-primary-foreground: 240 10% 4%;
++    --sidebar-accent: 240 10% 12%;
++    --sidebar-accent-foreground: var(--off-white);
++    --sidebar-border: 240 10% 12%;
++    --sidebar-ring: var(--neon-cyan);
++  }
++
++  /* Dark mode is the default - light mode not implemented per brand guidelines */
++  .dark {
++    --background: var(--deep-space);
++    --foreground: var(--off-white);
++  }
++}
++
++@layer base {
++  * {
++    @apply border-border;
++  }
++
++  html {
++    scroll-behavior: smooth;
++  }
++
++  body {
++    @apply bg-background text-foreground antialiased;
++    font-family: var(--font-body);
++  }
++
++  h1, h2, h3, h4, h5, h6 {
++    font-family: var(--font-display);
++    @apply tracking-tight;
++  }
++}
++
++@layer components {
++  .text-gradient {
++    @apply bg-clip-text text-transparent;
++    background-image: var(--gradient-intelligence);
++  }
++
++  .glass-card {
++    background: hsl(216 20% 10% / 0.5);
++    border: 1px solid hsl(210 14% 91% / 0.06);
++    @apply backdrop-blur-xl rounded-2xl;
++  }
++
++  .glass-card-hover {
++    @apply glass-card transition-all duration-300;
++  }
++
++  .glass-card-hover:hover {
++    border-color: hsl(210 14% 91% / 0.12);
++    background: hsl(216 20% 10% / 0.7);
++  }
++
++  .glass-border {
++    border: 1px solid hsl(210 14% 91% / 0.06);
++  }
++
++  .section-divider {
++    @apply h-px w-full;
++    background: linear-gradient(90deg, transparent 0%, hsl(210 14% 91% / 0.08) 50%, transparent 100%);
++  }
++
++  .glow-subtle {
++    box-shadow: var(--shadow-glow);
++  }
++}
++
++@layer utilities {
++  .font-display {
++    font-family: var(--font-display);
++  }
++
++  .font-body {
++    font-family: var(--font-body);
++  }
++
++  /* Animation utilities */
++  .animate-fade-up {
++    animation: fade-up 0.6s ease-out forwards;
++  }
++
++  .animate-fade-in {
++    animation: fade-in 0.8s ease-out forwards;
++  }
++
++  @keyframes fade-up {
++    from {
++      opacity: 0;
++      transform: translateY(20px);
++    }
++    to {
++      opacity: 1;
++      transform: translateY(0);
++    }
++  }
++
++  @keyframes fade-in {
++    from {
++      opacity: 0;
++    }
++    to {
++      opacity: 1;
++    }
++  }
++
++  @keyframes shimmer {
++    100% {
++      transform: translateX(100%);
++    }
++  }
++}

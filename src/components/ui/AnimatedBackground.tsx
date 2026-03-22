@@ -11,7 +11,7 @@ export const AnimatedBackground = () => {
       {/* Blob 1: Vibrant Royal Blue (Left side) */}
       <motion.div
         className="absolute left-[-10%] top-[-10%] h-[120vh] w-[80vw] rounded-full blur-[160px]"
-        style={{ background: 'radial-gradient(circle, rgba(38, 115, 255, 0.3) 0%, rgba(38, 115, 255, 0.1) 40%, transparent 70%)' }}
+        style={{ background: 'radial-gradient(circle, rgba(77, 130, 188, 0.3) 0%, rgba(77, 130, 188, 0.1) 40%, transparent 70%)' }}
         animate={{
           x: [0, 50, -20, 0],
           y: [0, -30, 40, 0],
@@ -27,7 +27,7 @@ export const AnimatedBackground = () => {
       {/* Blob 2: Deep Sapphire / Navy (Right center) */}
       <motion.div
         className="absolute right-[-5%] top-[10%] h-[100vh] w-[70vw] rounded-full blur-[150px]"
-        style={{ background: 'radial-gradient(circle, rgba(15, 45, 120, 0.5) 0%, rgba(15, 45, 120, 0.15) 50%, transparent 70%)' }}
+        style={{ background: 'radial-gradient(circle, rgba(46, 78, 113, 0.5) 0%, rgba(46, 78, 113, 0.15) 50%, transparent 70%)' }}
         animate={{
           x: [0, -60, 30, 0],
           y: [0, 50, -20, 0],
@@ -43,7 +43,7 @@ export const AnimatedBackground = () => {
       {/* Blob 3: Electric Cyan (Bottom left accent) */}
       <motion.div
         className="absolute bottom-[-20%] left-[10%] h-[80vh] w-[90vw] rounded-[100%] blur-[180px]"
-        style={{ background: 'radial-gradient(ellipse, rgba(0, 204, 255, 0.15) 0%, transparent 60%)' }}
+        style={{ background: 'radial-gradient(ellipse, rgba(77, 130, 188, 0.15) 0%, transparent 60%)' }}
         animate={{
           x: [0, 30, -40, 0],
           y: [0, -20, 50, 0],

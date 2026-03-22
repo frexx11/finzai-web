@@ -14,29 +14,29 @@
     /* Engie Designs Palette */
     /* Black Pearl: #1E262F -> 212 22% 15% */
     /* Into the Stratosphere: #415365 -> 210 22% 33% */
-    /* Blue Prince: #697F93 -> 210 18% 49% */
-    /* Wet Pavement: #9D9F97 -> 75 3% 60% */
-    /* Soft Secret: #D6D4C9 -> 51 11% 81% */
+    /* Blue Prince (Custom): #4d82bc -> 211 46% 52% */
+    /* Wet Pavement (Updated): 200 15% 70% */
+    /* Soft Secret (Updated): 210 20% 90% */
 
     --background: 212 22% 15%;
-    --foreground: 51 11% 81%;
+    --foreground: 210 20% 90%;
 
     --card: 210 22% 20%;
-    --card-foreground: 51 11% 81%;
+    --card-foreground: 210 20% 90%;
 
     --popover: 210 22% 20%;
-    --popover-foreground: 51 11% 81%;
+    --popover-foreground: 210 20% 90%;
 
-    --primary: 210 18% 49%;
+    --primary: 211 46% 52%;
     --primary-foreground: 212 22% 15%;
 
     --secondary: 210 22% 33%;
-    --secondary-foreground: 51 11% 81%;
+    --secondary-foreground: 210 20% 90%;
 
     --muted: 210 22% 24%;
-    --muted-foreground: 75 3% 60%;
+    --muted-foreground: 200 15% 70%;
 
-    --accent: 75 3% 60%;
+    --accent: 200 15% 70%;
     --accent-foreground: 212 22% 15%;
 
     --destructive: 0 84.2% 60.2%;
@@ -44,16 +44,16 @@
 
     --border: 210 22% 33%;
     --input: 210 22% 33%;
-    --ring: 210 18% 49%;
+    --ring: 211 46% 52%;
 
     --radius: 1rem;
 
     /* Custom Finzai Brand Colors - overriding to match new palette */
-    --intelligence-blue: 210 18% 49%;
-    --steel-cyan: 75 3% 60%;
+    --intelligence-blue: 211 46% 52%;
+    --steel-cyan: 200 15% 70%;
     --deep-obsidian: 212 22% 15%;
     --graphite: 212 22% 15%;
-    --off-white: 51 11% 81%;
+    --off-white: 210 20% 90%;
 
     /* Typography */
     --font-display: 'Space Grotesk', sans-serif;

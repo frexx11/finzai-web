@@ -98,6 +98,12 @@ export const translations = {
     },
     footer: {
       rights: "Todos los derechos reservados."
+    },
+    notFound: {
+      title: "404",
+      subtitle: "Houston, tenemos un problema.",
+      desc: "La página que buscas no existe o ha sido movida. Pero el mercado sigue girando.",
+      button: "Volver al inicio"
     }
   },
   en: {
@@ -199,6 +205,12 @@ export const translations = {
     },
     footer: {
       rights: "All rights reserved."
+    },
+    notFound: {
+      title: "404",
+      subtitle: "Houston, we have a problem.",
+      desc: "The page you're looking for doesn't exist or has been moved. But the market keeps spinning.",
+      button: "Return home"
     }
   }
 };

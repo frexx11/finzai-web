@@ -43,28 +43,28 @@ const CTA = () => {
         
         if (data.message?.includes("Ya estás al día")) {
           toast({
-            title: "Ya estás en la lista",
-            description: "¡Ya te apuntaste! No hace falta que lo hagas de nuevo.",
+            title: t('toasts.alreadyOnListTitle'),
+            description: t('toasts.alreadyOnListDesc'),
           });
         } else {
           setIsSuccess(true);
           toast({
-            title: "¡Estás dentro!",
-            description: "Revisa tu correo para confirmar el acceso.",
+            title: t('toasts.successTitle'),
+            description: t('toasts.successDesc'),
           });
         }
         setEmail("");
       } else {
         toast({
-          title: "Algo ha fallado",
-          description: "Por favor, inténtalo de nuevo más tarde.",
+          title: t('toasts.errorTitle'),
+          description: t('toasts.errorDesc'),
           variant: "destructive",
         });
       }
     } catch {
       toast({
-        title: "Algo ha fallado",
-        description: "Por favor, inténtalo de nuevo más tarde.",
+        title: t('toasts.errorTitle'),
+        description: t('toasts.errorDesc'),
         variant: "destructive",
       });
     }
@@ -161,7 +161,7 @@ const CTA = () => {
             transition={{ duration: 0.5, delay: 0.6 }}
             className="mt-4 text-xs text-muted-foreground/50"
           >
-            Sin spam · Cancela cuando quieras
+            {t('hero.noSpam')}
           </motion.p>
         </motion.div>
       </div>

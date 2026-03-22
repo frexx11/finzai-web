@@ -38,8 +38,8 @@ const Footer = () => {
             ))}
           </nav>
 
-          <p className="text-xs text-muted-foreground/40">
-            © {new Date().getFullYear()} Finzai
+          <p className="text-xs text-muted-foreground/40 text-center md:text-right">
+            © {new Date().getFullYear()} Finzai · {t('footer.rights')}
           </p>
         </div>
       </div>

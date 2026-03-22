@@ -63,7 +63,7 @@ const Navbar = () => {
             size="sm" 
             onClick={toggleLanguage} 
             className="px-2 text-muted-foreground hover:text-foreground hover:bg-white/5 transition-colors"
-            title="Change language"
+            title={t('common.switchLanguage')}
           >
             <Globe className="w-4 h-4 mr-1.5 opacity-70" />
             <span className="text-[12px] font-semibold tracking-wider">{language === 'es' ? 'EN' : 'ES'}</span>
@@ -101,7 +101,7 @@ const Navbar = () => {
                   className="w-full border border-white/5 text-muted-foreground justify-center"
                 >
                   <Globe className="w-4 h-4 mr-2 opacity-70" />
-                  {language === 'es' ? 'Switch to English' : 'Cambiar a Español'}
+                  {t('common.switchLanguage')}
                 </Button>
                 <Button variant="intelligence" size="lg" asChild className="w-full">
                   <a href="#stay-updated" onClick={() => setOpen(false)}>

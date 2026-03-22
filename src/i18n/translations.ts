@@ -16,8 +16,9 @@ export const translations = {
       buttonIdle: "Quiero acceso anticipado",
       buttonProcessing: "Procesando...",
       successTitle: "¡Ya estás en la lista!",
-      successDesc: "Te avisaremos pronto.",
-      trustLine: "Sin spam · Cancela cuando quieras · Acceso gratuito durante el beta"
+      successDesc: "Te avisaremos pronto. Revisa tu correo.",
+      trustLine: "Sin spam · Cancela cuando quieras · Acceso gratuito durante el beta",
+      noSpam: "Sin spam · Cancela cuando quieras"
     },
     socialProof: {
       tagline: "Precisión · Control · Claridad",
@@ -99,6 +100,17 @@ export const translations = {
     footer: {
       rights: "Todos los derechos reservados."
     },
+    toasts: {
+      successTitle: "¡Estás dentro!",
+      successDesc: "Revisa tu correo para confirmar el acceso.",
+      errorTitle: "Algo ha fallado",
+      errorDesc: "Por favor, inténtalo de nuevo más tarde.",
+      alreadyOnListTitle: "Ya estás en la lista",
+      alreadyOnListDesc: "¡Ya te apuntaste! No hace falta que lo hagas de nuevo."
+    },
+    common: {
+      switchLanguage: "Switch to English"
+    },
     notFound: {
       title: "404",
       subtitle: "Houston, tenemos un problema.",
@@ -117,19 +129,20 @@ export const translations = {
     hero: {
       waitlist: "Limited Early Access",
       title1: "The market doesn't wait.",
-      title2: "Neither should you.",
-      subtitle: "Finzai monitors the markets, understands your profile, and alerts you when something truly matters. You decide.",
+      title2: "Neither does Finzai.",
+      subtitle: "Finzai monitors the markets, understands your profile, and notifies you when something truly matters. The decision is yours.",
       emailPlaceholder: "Your email address",
       buttonIdle: "Get Early Access",
       buttonProcessing: "Processing...",
       successTitle: "You're on the list!",
-      successDesc: "We'll notify you soon.",
-      trustLine: "No spam · Cancel anytime · Free access during beta"
+      successDesc: "We'll notify you soon. Check your email.",
+      trustLine: "No spam · Cancel anytime · Free access during the beta",
+      noSpam: "No spam · Cancel anytime"
     },
     socialProof: {
       tagline: "Precision · Control · Clarity",
       metric1Value: "< 5 min",
-      metric1Desc: "From market event to your notification",
+      metric1Desc: "From market event to your awareness",
       metric2Value: "0",
       metric2Desc: "Trades executed without your confirmation. Never.",
       metric3Value: "100%",
@@ -176,7 +189,7 @@ export const translations = {
       p1Desc: "We filter the chaos so you don't have to. Every analysis is verified, relevant, and actionable.",
       p2Title: "Your profile, your strategy",
       p2Desc: "Zero generic recommendations. Finzai completely adapts to your financial DNA—your goals, your risk, your timeline.",
-      p3Title: "Transparency first",
+      p3Title: "Transparency above all",
       p3Desc: "We show you why we suggest something, not just the what. Full reasoning, absolute control, no black boxes.",
       p4Title: "Privacy is non-negotiable",
       p4Desc: "Your data is yours. We don't sell, share, or monetize your financial information. Ever.",
@@ -205,6 +218,17 @@ export const translations = {
     },
     footer: {
       rights: "All rights reserved."
+    },
+    toasts: {
+      successTitle: "You're in!",
+      successDesc: "Check your email to confirm your access.",
+      errorTitle: "Something went wrong",
+      errorDesc: "Please try again later.",
+      alreadyOnListTitle: "Already on the list",
+      alreadyOnListDesc: "You've already signed up! No need to do it again."
+    },
+    common: {
+      switchLanguage: "Cambiar a Español"
     },
     notFound: {
       title: "404",

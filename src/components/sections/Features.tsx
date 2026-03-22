@@ -97,10 +97,25 @@ const getFeatures = (t: any) => [
     description: t('features.feat5Desc'),
     colSpan: "md:col-span-1",
     visual: () => (
-      <div className="absolute inset-0 pointer-events-none rounded-2xl overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,hsl(var(--primary)/0.15),transparent_60%)] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-        {/* Matrix/Secure lines effect */}
-        <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'repeating-linear-gradient(0deg, transparent, transparent 2px, #fff 2px, #fff 4px)', backgroundSize: '100% 4px' }} />
+      <div className="absolute inset-0 overflow-hidden pointer-events-none rounded-2xl">
+        {/* Layered Security Aura */}
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,hsl(var(--primary)/0.1),transparent_70%)] opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+        
+        {/* Animated Security Rings */}
+        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 border border-primary/5 rounded-full scale-0 group-hover:scale-100 transition-transform duration-1000 ease-out" />
+        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 border border-primary/10 rounded-full scale-0 group-hover:scale-110 transition-transform duration-700 ease-out delay-100" />
+        
+        {/* Lock visual pop in the background */}
+        <div className="absolute right-[-10%] bottom-[-10%] w-40 h-40 opacity-[0.03] group-hover:opacity-[0.08] transition-all duration-700 rotate-12 group-hover:rotate-0 group-hover:scale-110">
+           <Lock className="w-full h-full text-white" strokeWidth={0.5} />
+        </div>
+
+        {/* Floating security particles */}
+        <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-1000">
+           <div className="absolute top-[20%] left-[30%] w-1 h-1 bg-primary rounded-full animate-pulse" />
+           <div className="absolute top-[60%] right-[25%] w-1 h-1 bg-accent rounded-full animate-pulse delay-75" />
+           <div className="absolute bottom-[20%] left-[45%] w-1 h-1 bg-primary rounded-full animate-pulse delay-150" />
+        </div>
       </div>
     )
   }
@@ -130,39 +145,39 @@ const Features = () => {
             {t('features.title1')}{" "}
             <span className="text-gradient hover-trigger">{t('features.title2')}</span>
           </h2>
-          <p className="mx-auto mt-5 max-w-lg text-base leading-[1.8] text-muted-foreground">
+          <p className="mx-auto mt-4 max-w-lg text-base leading-[1.8] text-muted-foreground">
             {t('features.desc')}
           </p>
         </motion.div>
 
-        {/* Highlighted Introductor Block */}
+        {/* Highlighted Introductor Block - Integrated closer */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="mx-auto mt-16 max-w-[1200px] relative rounded-2xl p-px overflow-hidden group"
+          className="mx-auto mt-10 max-w-[1200px] relative rounded-2xl p-px overflow-hidden group"
         >
           {/* Animated gradient border */}
-          <div className="absolute inset-0 bg-gradient-to-r from-accent/0 via-accent/50 to-primary/0 group-hover:via-accent transition-opacity duration-1000 opacity-50" />
+          <div className="absolute inset-0 bg-gradient-to-r from-accent/0 via-accent/30 to-primary/0 group-hover:via-accent/60 transition-opacity duration-1000 opacity-40" />
           
-          <div className="relative bg-card/90 backdrop-blur-md rounded-[15px] p-8 md:p-10 flex flex-col md:flex-row items-center gap-8 border border-white/5">
+          <div className="relative bg-card/60 backdrop-blur-md rounded-[15px] p-7 md:p-8 flex flex-col md:flex-row items-center gap-6 md:gap-8 border border-white/5">
             <div className="flex-1">
-              <h3 className="font-display text-2xl md:text-3xl font-medium text-foreground mb-4">
-                {t('features.highlightTitle1')} <span className="text-muted-foreground">{t('features.highlightTitle2')}</span>
+              <h3 className="font-display text-xl md:text-2xl font-medium text-foreground mb-3">
+                {t('features.highlightTitle1')} <span className="text-muted-foreground font-normal">{t('features.highlightTitle2')}</span>
               </h3>
-              <p className="text-muted-foreground leading-relaxed text-base md:text-lg">
+              <p className="text-muted-foreground/90 leading-relaxed text-sm md:text-base max-w-3xl">
                 {t('features.highlightDesc')}
               </p>
             </div>
-            <div className="shrink-0 flex items-center justify-center w-16 h-16 rounded-full bg-accent/10 border border-accent/20 text-accent">
-               <Zap className="w-8 h-8 group-hover:scale-110 transition-transform duration-500" />
+            <div className="shrink-0 flex items-center justify-center w-14 h-14 rounded-full bg-accent/10 border border-accent/20 text-accent group-hover:bg-accent/20 transition-all duration-500">
+               <Zap className="w-7 h-7 group-hover:scale-110 transition-transform duration-500" />
             </div>
           </div>
         </motion.div>
 
-        {/* 5-Card Bento Box Grid */}
-        <div className="mx-auto mt-20 grid w-full max-w-[1200px] gap-6 md:grid-cols-3 xl:gap-8 auto-rows-fr">
+        {/* 5-Card Bento Box Grid - Closer to lead-in */}
+        <div className="mx-auto mt-10 grid w-full max-w-[1200px] gap-6 md:grid-cols-3 xl:gap-8 auto-rows-fr">
           {features.map((feature, index) => {
             const isWide = index === 0;
 
